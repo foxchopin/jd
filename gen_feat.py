@@ -216,7 +216,7 @@ def get_labels(start_date, end_date):
     else:
         actions = get_actions(start_date, end_date)
         actions = actions[actions['type'] == 4]
-        actions = actions.groupby(['user_id', 'sku_id'], as_index=False).sum()
+        actions = actions.groupby(['user_id', 'sku_id'], as_index=False).sum()#sum是因为一个用户id可能对某商品购买多次
         actions['label'] = 1
         actions = actions[['user_id', 'sku_id', 'label']]
         pickle.dump(actions, open(dump_path, 'w'))
