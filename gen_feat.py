@@ -167,7 +167,7 @@ def get_comments_product_feat(start_date, end_date):
     return comments
 
 
-def get_accumulate_user_feat(start_date, end_date):
+def get_accumulate_user_feat(start_date, end_date):#某种商品的购买由其他action的转化率
     feature = ['user_id', 'user_action_1_ratio', 'user_action_2_ratio', 'user_action_3_ratio',
                'user_action_5_ratio', 'user_action_6_ratio']
     dump_path = './cache/user_feat_accumulate_%s_%s.pkl' % (start_date, end_date)
