@@ -245,7 +245,7 @@ def make_test_set(train_start_date, train_end_date):
             if actions is None:
                 actions = get_action_feat(start_days, train_end_date)
             else:
-                actions = pd.merge(actions, get_action_feat(start_days, train_end_date), how='outer',
+                actions = pd.merge(actions, get_action_feat(start_days, train_end_date), how='outer', # 如果how = left，只会对一天前出现的数据进行统计，因为时间断越长出现的用户商品对越多。
                                    on=['user_id', 'sku_id'])
 
         actions = pd.merge(actions, user, how='left', on='user_id')
