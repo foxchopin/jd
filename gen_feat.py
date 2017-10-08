@@ -245,7 +245,7 @@ def make_test_set(train_start_date, train_end_date):
             if actions is None:
                 actions = get_action_feat(start_days, train_end_date)
             else:
-                actions = pd.merge(actions, get_action_feat(start_days, train_end_date), how='left',
+                actions = pd.merge(actions, get_action_feat(start_days, train_end_date), how='outer',
                                    on=['user_id', 'sku_id'])
 
         actions = pd.merge(actions, user, how='left', on='user_id')
@@ -284,7 +284,7 @@ def make_train_set(train_start_date, train_end_date, test_start_date, test_end_d
             if actions is None:
                 actions = get_action_feat(start_days, train_end_date)
             else:
-                actions = pd.merge(actions, get_action_feat(start_days, train_end_date), how='left',
+                actions = pd.merge(actions, get_action_feat(start_days, train_end_date), how='outer',
                                    on=['user_id', 'sku_id'])
 
         actions = pd.merge(actions, user, how='left', on='user_id')
